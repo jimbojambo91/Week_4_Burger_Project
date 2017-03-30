@@ -15,5 +15,6 @@ CREATE TABLE burgers(
 CREATE TABLE menu_items(
   id SERIAL2 PRIMARY KEY,
   eatery_id INT2 REFERENCES eateries(id),
-  burger_id INT2 REFERENCES burgers(id)
+  burger_id INT2 REFERENCES burgers(id),
+  price INT2
 )
