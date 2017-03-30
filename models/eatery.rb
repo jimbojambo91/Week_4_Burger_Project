@@ -4,9 +4,9 @@ class Eatery
 
   attr_reader(:id, :name)
 
-  def intialize(options)
+  def initialize(options)
     @id = options['id'].to_i
-    @name = ooptions['name']
+    @name = options['name']
   end
 
   def save()
