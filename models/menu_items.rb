@@ -27,4 +27,14 @@ class MenuItem
     return results.map { |hash| MenuItem.new( hash ) }
   end
 
+  def self.delete_all
+    sql = "DELETE FROM menu_items"
+    SqlRunner.run( sql )
+  end
+
+  def self.destroy(id)
+    sql = "DELETE FROM menu_items where id = #{id}"
+    SqlRunner.run( sql )
+  end
+
 end
