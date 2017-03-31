@@ -19,3 +19,6 @@ menu_item1 = MenuItem.new({
   'price' => 1.00
   })
 menu_item1.save()
+
+binding.pry
+nil

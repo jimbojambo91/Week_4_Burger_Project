@@ -19,6 +19,20 @@ class Burger
     @id = results.first()['id'].to_i
   end
 
+  def eateries()
+    sql = "SELECT e.* FROM eateries e
+      INNER JOIN menu_items m
+      ON e.id = m.eatery_id WHERE burger_id = #{id}"
+     eateries = Eatery.map_items(sql)
+     return eateries
+  end
+
+  def self.map_items(sql)
+    burgers = SqlRunner.run(sql)
+    result = burgers.map { |burger| Burger.new(burger)}
+    return result
+  end
+
   def self.all()
     sql = "SELECT * FROM burgers"
     results = SqlRunner.run( sql )
