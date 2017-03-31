@@ -35,8 +35,18 @@ class Deal
       INNER JOIN menu_items m
       ON b.id = m.burger_id
       WHERE m.id = #{@menu_item_id}"
-     eateries = Eatery.map_items(sql)
-     return eateries
+     burgers = Burger.map_items(sql)
+     return burgers
+  end
+
+  def day
+    sql = "SELECT d.* FROM days d
+      INNER JOIN deals de
+      ON d.id = de.day_id
+      WHERE d.id = #{@day_id}"
+      day = Day.map_items(sql)
+      return day
+
   end
 
   def self.all()

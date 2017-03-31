@@ -30,5 +30,12 @@ class Day
     SqlRunner.run( sql )
   end
 
+  def self.map_items(sql)
+    days = SqlRunner.run(sql)
+    result = days.map { |day| Day.new(day)}
+    return result
+  end
+
+
 
 end
