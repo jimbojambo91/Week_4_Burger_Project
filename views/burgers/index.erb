@@ -1,0 +1,14 @@
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th>Type</th>
+  </tr>
+  <% for burger in @burgers %>
+  <tr>
+    <td><%= burger.name %></td>
+    <td>|</td>
+    <td> <img src=" <%= burger.image %> " style ="width: 20%; height:20%"> </td>
+  </tr>
+  <% end %>
+</table>

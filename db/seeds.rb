@@ -27,11 +27,11 @@ day5.save
 day6.save
 day7.save
 
-burger1 = Burger.new({'name' => "Hamburger"})
-burger2 = Burger.new({'name' => "Cheeseburger"})
-burger3 = Burger.new({'name' => "Whopper"})
-burger4 = Burger.new({'name' => "Big Mac"})
-burger5 = Burger.new({'name' => "Royale with cheese"})
+burger1 = Burger.new({'name' => "Hamburger", 'image' => '/images/Burgers/hamburger.jpg'})
+burger2 = Burger.new({'name' => "Cheeseburger", 'image' => '/images/Burgers/Cheeseburger.jpg'})
+burger3 = Burger.new({'name' => "Whopper", 'image' => '/images/Burgers/whopper.jpg'})
+burger4 = Burger.new({'name' => "Big Mac", 'image' => '/images/Burgers/BigMac.jpg'})
+burger5 = Burger.new({'name' => "Royale with cheese", 'image' => '/images/Burgers/royale.png'})
 burger1.save()
 burger2.save()
 burger3.save()

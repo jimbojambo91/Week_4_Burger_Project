@@ -2,18 +2,19 @@ require_relative( '../db/sql_runner' )
 
 class Burger
 
-  attr_reader(:id, :name)
+  attr_reader(:id, :name, :image)
 
   def initialize(options)
     @id = options['id'].to_i
     @name = options['name']
+    @image = options['image']
   end
 
   def save()
     sql = "INSERT INTO burgers (
-      name
+      name, image
     ) VALUES (
-      '#{ @name }'
+      '#{ @name }', '#{ @image }'
     ) RETURNING *"
     results = SqlRunner.run(sql)
     @id = results.first()['id'].to_i

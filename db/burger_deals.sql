@@ -11,7 +11,8 @@ CREATE TABLE eateries(
 
 CREATE TABLE burgers(
   id SERIAL2 PRIMARY KEY,
-  name VARCHAR(255)
+  name VARCHAR(255),
+  image VARCHAR(255)
 );
 
 CREATE TABLE days(
