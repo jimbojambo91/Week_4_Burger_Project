@@ -1,6 +1,7 @@
 DROP TABLE menu_items;
 DROP TABLE eateries;
 DROP TABLE burgers;
+DROP TABLE days;
 
 CREATE TABLE eateries(
   id SERIAL2 PRIMARY KEY,
@@ -8,6 +9,11 @@ CREATE TABLE eateries(
 );
 
 CREATE TABLE burgers(
+  id SERIAL2 PRIMARY KEY,
+  name VARCHAR(255)
+);
+
+CREATE TABLE days(
   id SERIAL2 PRIMARY KEY,
   name VARCHAR(255)
 );
