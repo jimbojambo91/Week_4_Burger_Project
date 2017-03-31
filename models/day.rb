@@ -25,4 +25,10 @@ class Day
     return results.map { |day| Day.new( day) }
   end
 
+  def self.delete_all
+    sql = "DELETE FROM days"
+    SqlRunner.run( sql )
+  end
+
+
 end

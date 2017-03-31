@@ -24,3 +24,10 @@ CREATE TABLE menu_items(
   burger_id INT2 REFERENCES burgers(id),
   price INT2
 );
+
+CREATE TABLE deals(
+  id SERIAL2 PRIMARY KEY,
+  name VARCHAR(255),
+  menu_item_id INT2 REFERENCES menu_items(id),
+  day_id INT2 REFERENCES days(id),
+);

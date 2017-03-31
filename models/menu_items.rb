@@ -15,7 +15,7 @@ class MenuItem
     sql = "INSERT INTO menu_items (
       burger_id, eatery_id, price
     ) VALUES (
-      '#{ @burger_id }',#{ @eatery_id }, #{price}
+      '#{ @burger_id }',#{ @eatery_id }, #{@price}
     ) RETURNING *"
     results = SqlRunner.run(sql)
     @id = results.first()['id'].to_i
