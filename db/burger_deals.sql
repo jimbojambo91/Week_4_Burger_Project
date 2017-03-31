@@ -1,3 +1,4 @@
+DROP TABLE deals;
 DROP TABLE menu_items;
 DROP TABLE eateries;
 DROP TABLE burgers;
@@ -29,5 +30,5 @@ CREATE TABLE deals(
   id SERIAL2 PRIMARY KEY,
   name VARCHAR(255),
   menu_item_id INT2 REFERENCES menu_items(id),
-  day_id INT2 REFERENCES days(id),
+  day_id INT2 REFERENCES days(id)
 );

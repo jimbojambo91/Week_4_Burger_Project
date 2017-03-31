@@ -5,10 +5,11 @@ require_relative( '../models/day.rb' )
 require_relative( '../models/deal.rb' )
 require('pry-byebug')
 
+Deal.delete_all
 MenuItem.delete_all
 Eatery.delete_all
 Burger.delete_all
-Days.delete_all
+Day.delete_all
 
 day1 = Day.new('name' => "Monday")
 day2 = Day.new('name' => "Tuesday")
@@ -38,7 +39,7 @@ burger4.save()
 burger5.save()
 
 eatery1 = Eatery.new({'name' => "McDonalds"}) 
-eatery1 = Eatery.new({'name' => "Burger King"}) 
+eatery2 = Eatery.new({'name' => "Burger King"}) 
 eatery1.save()
 eatery2.save()
 
@@ -62,6 +63,11 @@ menu_item3 = MenuItem.new({
 menu_item1.save()
 menu_item2.save()
 menu_item3.save()
+
+deal1 = Deal.new({'name' => "50% off", 'menu_item_id' => menu_item2.id , 'day_id' => day3.id})
+deal2 = Deal.new({'name' => "BOGOF", 'menu_item_id' => menu_item3.id , 'day_id' => day1.id})
+deal1.save()
+deal2.save()
 
 binding.pry
 nil
