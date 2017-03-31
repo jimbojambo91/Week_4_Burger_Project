@@ -30,6 +30,15 @@ class Deal
      return eateries
   end
 
+  def burger()
+    sql = "SELECT b.* FROM burgers b
+      INNER JOIN menu_items m
+      ON b.id = m.burger_id
+      WHERE m.id = #{@menu_item_id}"
+     eateries = Eatery.map_items(sql)
+     return eateries
+  end
+
   def self.all()
     sql = "SELECT * FROM deals"
     results = SqlRunner.run( sql )
