@@ -2,9 +2,26 @@
 <html>
 <head>
   <title>Burgers</title>
+  <link rel="stylesheet" type="text/css" href="/styles/structure.css">
+  <link href='//fonts.googleapis.com/css?family=Muli' rel='stylesheet'>
   <link rel="icon" href="/images/burger-outline-filled.png" />
 </head>
 <body>
+  <header class="flex flex--row">
+    <nav>
+      <ul>
+        <li>
+          <a href="/">HOME </a>
+        </li>
+        <li>
+          <a href="/burgers">BURGERS</a>
+        </li>
+        <li>
+          <a href="/eateries">EATERIES</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
   <%= yield %>
 </body>
 </html>

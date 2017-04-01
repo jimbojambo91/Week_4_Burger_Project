@@ -38,8 +38,8 @@ burger3.save()
 burger4.save()
 burger5.save()
 
-eatery1 = Eatery.new({'name' => "McDonalds"}) 
-eatery2 = Eatery.new({'name' => "Burger King"}) 
+eatery1 = Eatery.new({'name' => "McDonalds", 'image' => '/images/Eateries/mcdonalds.jpg'}) 
+eatery2 = Eatery.new({'name' => "Burger King", 'image' => '/images/Eateries/burger_king.jpg'}) 
 eatery1.save()
 eatery2.save()
 

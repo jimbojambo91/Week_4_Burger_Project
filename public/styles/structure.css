@@ -1,0 +1,35 @@
+.flex {
+  display: flex;
+}
+
+.flex--row {
+  flex-direction: column;
+}
+
+body {
+  background-color: paleturquoise;
+  font-family: 'Muli';font-size: 22px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: mediumturquoise;
+}
+
+li {
+    float: left;
+}
+
+a {
+    display: block;
+    padding: 8px;
+    background-color: mediumturquoise;
+}
+
+img{
+    width:100%;
+    max-width:200px;
+}
