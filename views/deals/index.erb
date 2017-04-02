@@ -1,0 +1,22 @@
+<table>
+  <tr>
+    <th>Day Available</th>
+    <th></th>
+    <th>Type of Deal</th>
+    <th></th>
+    <th>Eatery</th>
+    <th></th>
+    <th>Burger</th>
+  </tr>
+  <% for deal in @deals %>
+  <tr>
+    <td><%= (deal.day).name %></td>
+    <td>|</td>
+    <td><%= deal.name %> </td>
+    <td>|</td>
+    <td> <%= deal.eatery.name %> </td>
+    <td>|</td>
+    <td> <%= deal.burger.name %> </td>
+  </tr>
+  <% end %>
+</table>

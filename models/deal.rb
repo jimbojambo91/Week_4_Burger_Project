@@ -26,7 +26,7 @@ class Deal
       INNER JOIN menu_items m
       ON e.id = m.eatery_id
       WHERE m.id = #{@menu_item_id}"
-     eateries = Eatery.map_items(sql)
+     eateries = Eatery.map_items(sql).first
      return eateries
   end
 
@@ -35,7 +35,7 @@ class Deal
       INNER JOIN menu_items m
       ON b.id = m.burger_id
       WHERE m.id = #{@menu_item_id}"
-     burgers = Burger.map_items(sql)
+     burgers = Burger.map_items(sql).first
      return burgers
   end
 
@@ -44,9 +44,15 @@ class Deal
       INNER JOIN deals de
       ON d.id = de.day_id
       WHERE d.id = #{@day_id}"
-      day = Day.map_items(sql)
+      day = Day.map_items(sql).first
       return day
 
+  end
+
+  def self.map_items(sql)
+    deals = SqlRunner.run(sql)
+    result = deals.map { |deal| Deal.new(deal)}
+    return result
   end
 
   def self.all()
