@@ -27,11 +27,14 @@ day5.save
 day6.save
 day7.save
 
-burger1 = Burger.new({'name' => "Hamburger", 'image' => '/images/Burgers/hamburger.jpg'})
-burger2 = Burger.new({'name' => "Cheeseburger", 'image' => '/images/Burgers/Cheeseburger.jpg'})
-burger3 = Burger.new({'name' => "Whopper", 'image' => '/images/Burgers/whopper.jpg'})
-burger4 = Burger.new({'name' => "Big Mac", 'image' => '/images/Burgers/BigMac.jpg'})
-burger5 = Burger.new({'name' => "Royale with cheese", 'image' => '/images/Burgers/royale.png'})
+burger1 = Burger.new({
+  'name' => "Hamburger", 
+  'image' => '/images/Burgers/hamburger.jpg', 
+  'description' => "A hamburger is a sandwich consisting of a cooked patty of ground meat usually placed inside a sliced bread roll. Hamburgers are often served with lettuce, bacon, tomato, onion, pickles, cheese, and condiments such as mustard, mayonnaise, ketchup, and relish. There are many types of hamburgers with significant variations"})
+burger2 = Burger.new({'name' => "Cheeseburger", 'image' => '/images/Burgers/Cheeseburger.jpg', 'description' => "A cheeseburger is a hamburger accompanied with melted cheese. The term itself is a portmanteau of the words ""cheese"" and ""hamburger."" The cheese is usually sliced, then added a short time before the hamburger finishes cooking to allow it to melt."})
+burger3 = Burger.new({'name' => "Whopper", 'image' => '/images/Burgers/whopper.jpg', 'description' => "The Whopper is a hamburger, consisting of a flame grilled quarter-pound (113.4 g) beef patty, sesame seed bun, mayonnaise, lettuce, tomato, pickles, ketchup, and sliced onion. Optional ingredients such as American cheese, bacon, mustard, guacamole or jalapeño peppers may be added upon request."})
+burger4 = Burger.new({'name' => "Big Mac", 'image' => '/images/Burgers/BigMac.jpg', 'description' => "The Big Mac consists of two 1.6 oz (45.4 g) 100 per cent beef patties, ""special sauce"" (a variant of Thousand Island dressing), iceberg lettuce, American cheese, pickles, and onions, served in a three-part sesame seed bun."})
+burger5 = Burger.new({'name' => "Royale with cheese", 'image' => '/images/Burgers/royale.png', 'description' => "I know, baby, you''d dig it the most.. But you know what the funniest thing about Europe is? What? It''s the little differences. A lotta the same shit we got here, they got there, but there they''re a little different. Example? Alright, when you .... into a movie theatre in Amsterdam, you can buy beer. And I don''t mean in a paper cup either. They give you a glass of beer. And in Paris, you can buy beer at MacDonald''s. And you know what they call a Quarter Pounder with Cheese in Paris? They don''t call it a Quarter Pounder with Cheese? No, they got the metric system there, they wouldn''t know what the fuck a Quarter Pounder is. What''d they call it? They call it Royale with Cheese. Royale with Cheese. What''d they call a Big Mac? Big Mac''s a Big Mac, but they call it Le Big Mac."})
 burger1.save()
 burger2.save()
 burger3.save()

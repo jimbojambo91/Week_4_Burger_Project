@@ -16,3 +16,14 @@ post '/eateries' do
   @eatery.save()
   redirect to '/eateries'
 end
+
+get '/eateries/:id' do
+  @eatery = Eatery.find(params[:id])
+  erb(:"eateries/show")
+end
+
+post '/eateries/:id' do
+  @eatery = Eatery.find(params[:id])
+  @eatery.delete()
+  redirect to '/eateries'
+end

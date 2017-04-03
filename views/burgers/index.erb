@@ -6,7 +6,7 @@
   </tr>
   <% for burger in @burgers %>
   <tr>
-    <td><%= burger.name %></td>
+    <td> <a href='/burgers/<%= burger.id %>'> <%= burger.name %></td>
     <td>|</td>
     <td> <img src=" <%= burger.image %> " > </td>
   </tr>

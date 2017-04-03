@@ -17,3 +17,15 @@ get '/burgers/new' do
   erb(:"burgers/new")
 end
 
+get '/burgers/:id' do
+  @burger = Burger.find(params[:id])
+  @menu_items = @burger.menu_items
+  erb(:"burgers/show")
+end
+
+post '/burgers/:id' do
+  @burger = Burger.find(params[:id])
+  @burger.delete()
+  redirect to '/burgers'
+end
+

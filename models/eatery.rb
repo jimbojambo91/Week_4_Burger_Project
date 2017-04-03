@@ -28,6 +28,11 @@ class Eatery
      return burgers
   end
 
+  def delete
+    sql = "DELETE FROM eateries WHERE id = #{@id}"
+    SqlRunner.run(sql)
+  end
+
   def self.map_items(sql)
     eateries = SqlRunner.run(sql)
     result = eateries.map { |eatery| Eatery.new(eatery)}

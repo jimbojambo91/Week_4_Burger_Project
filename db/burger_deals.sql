@@ -13,7 +13,8 @@ CREATE TABLE eateries(
 CREATE TABLE burgers(
   id SERIAL2 PRIMARY KEY,
   name VARCHAR(255),
-  image VARCHAR(255)
+  image VARCHAR(255),
+  description TEXT
 );
 
 CREATE TABLE days(
@@ -23,15 +24,15 @@ CREATE TABLE days(
 
 CREATE TABLE menu_items(
   id SERIAL2 PRIMARY KEY,
-  eatery_id INT2 REFERENCES eateries(id),
-  burger_id INT2 REFERENCES burgers(id),
+  eatery_id INT2 REFERENCES eateries(id) ON DELETE CASCADE,
+  burger_id INT2 REFERENCES burgers(id) ON DELETE CASCADE,
   price FLOAT
 );
 
 CREATE TABLE deals(
   id SERIAL2 PRIMARY KEY,
   name VARCHAR(255),
-  menu_item_id INT2 REFERENCES menu_items(id),
+  menu_item_id INT2 REFERENCES menu_items(id) ON DELETE CASCADE,
   day_id INT2 REFERENCES days(id),
   type VARCHAR(255),
   amount FLOAT

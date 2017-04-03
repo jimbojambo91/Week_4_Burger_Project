@@ -21,6 +21,20 @@ class MenuItem
     @id = results.first()['id'].to_i
   end
 
+  def delete
+    sql = "DELETE FROM menu_items WHERE id = #{@id}"
+    SqlRunner.run(sql)
+  end
+
+  def eatery()
+    sql = "SELECT e.* FROM eateries e
+      INNER JOIN menu_items m
+      ON e.id = m.eatery_id
+      WHERE m.id = #{@id}"
+     eatery = Eatery.map_items(sql).first
+     return eatery
+  end
+
   def self.all()
     sql = "SELECT * FROM menu_items"
     results = SqlRunner.run( sql )

@@ -1,0 +1,27 @@
+<h1> <%= @burger.name %></h1> 
+
+<img src=" <%= @burger.image %> " >
+
+<div class="burger.para">
+<p1> <%=@burger.description  %></p1>
+
+<form method="post" action="/burgers/<%= @burger.id %>" >
+<input type="submit" value="Delete" />
+</div>
+
+
+
+<table>
+  <tr>
+    <th>Eatery</th>
+    <th></th>
+    <th>Price</th>
+  </tr>
+  <% for menu_item in @menu_items  %>
+  <tr>
+    <td> <%=menu_item.eatery.name  %></td>
+    <td>|</td>
+    <td> <%=menu_item.price  %> </td>
+  </tr>
+  <% end %>
+</table>

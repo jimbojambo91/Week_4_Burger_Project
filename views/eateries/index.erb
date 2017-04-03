@@ -6,7 +6,7 @@
   </tr>
   <% for eatery in @eateries %>
   <tr>
-    <td><%= eatery.name %></td>
+    <td> <a href='/eateries/<%= eatery.id %>'> <%= eatery.name %></td>
     <td>|</td>
     <td> <img src=" <%= eatery.image %> "> </td>
   </tr>

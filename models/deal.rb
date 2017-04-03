@@ -94,6 +94,11 @@ class Deal
     return deal_saving_percentage
   end
 
+  def delete
+    sql = "DELETE FROM deals WHERE id = #{@id}"
+    SqlRunner.run(sql)
+  end
+
   def self.map_items(sql)
     deals = SqlRunner.run(sql)
     result = deals.map { |deal| Deal.new(deal)}
