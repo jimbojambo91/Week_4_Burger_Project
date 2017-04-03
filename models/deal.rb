@@ -17,7 +17,7 @@ class Deal
     sql = "INSERT INTO deals (
       name, menu_item_id, day_id, type, amount
     ) VALUES (
-      '#{ @name }',#{ @menu_item_id }, #{@day_id}, '#{@type}', #{@amount} 
+      '#{ @name }', #{ @menu_item_id }, #{@day_id}, '#{@type}', #{@amount} 
     ) RETURNING *"
     results = SqlRunner.run(sql)
     @id = results.first()['id'].to_i
@@ -41,6 +41,15 @@ class Deal
      return burgers
   end
 
+  def menu_item()
+    sql = "SELECT m.* FROM menu_items m
+      INNER JOIN deals d
+      ON m.id = d.menu_item_id
+      WHERE m.id = #{@menu_item_id}"
+     menu_item = MenuItem.map_items(sql).first
+     return menu_item
+  end
+
   def day
     sql = "SELECT d.* FROM days d
       INNER JOIN deals de
@@ -48,7 +57,23 @@ class Deal
       WHERE d.id = #{@day_id}"
       day = Day.map_items(sql).first
       return day
+  end
 
+  def calculate_deal_price
+    original_price = self.menu_item.price
+    case self.type
+    when '*'
+      deal_price = original_price * self.amount
+    when '-'
+      deal_price = original_price - self.amount
+    when 'Special'
+      if self.name == "BOGOF"
+        deal_price = original_price / 2
+      else
+        return self.name
+      end
+    end
+    return deal_price
   end
 
   def self.map_items(sql)

@@ -37,4 +37,10 @@ class MenuItem
     SqlRunner.run( sql )
   end
 
+  def self.map_items(sql)
+    menu_items = SqlRunner.run(sql)
+    result = menu_items.map { |menu_item| MenuItem.new(menu_item)}
+    return result
+  end
+
 end
