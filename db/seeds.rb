@@ -64,8 +64,8 @@ menu_item1.save()
 menu_item2.save()
 menu_item3.save()
 
-deal1 = Deal.new({'name' => "50% off", 'menu_item_id' => menu_item2.id , 'day_id' => day3.id})
-deal2 = Deal.new({'name' => "BOGOF", 'menu_item_id' => menu_item3.id , 'day_id' => day1.id})
+deal1 = Deal.new({'name' => "50% off", 'menu_item_id' => menu_item2.id , 'day_id' => day3.id}, 'type' => "*", 'amount' => 0.5)
+deal2 = Deal.new({'name' => "BOGOF", 'menu_item_id' => menu_item3.id , 'day_id' => day1.id}, 'type' => 'Special')
 deal1.save()
 deal2.save()
 

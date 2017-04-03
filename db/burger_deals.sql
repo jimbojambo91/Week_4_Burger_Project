@@ -32,5 +32,7 @@ CREATE TABLE deals(
   id SERIAL2 PRIMARY KEY,
   name VARCHAR(255),
   menu_item_id INT2 REFERENCES menu_items(id),
-  day_id INT2 REFERENCES days(id)
+  day_id INT2 REFERENCES days(id),
+  type VARCHAR(255),
+  amount INT2
 );
