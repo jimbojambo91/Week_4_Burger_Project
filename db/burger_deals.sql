@@ -7,7 +7,9 @@ DROP TABLE days;
 CREATE TABLE eateries(
   id SERIAL2 PRIMARY KEY,
   name VARCHAR(255) NOT NULL,
-  image VARCHAR(255)
+  image VARCHAR(255),
+  description TEXT,
+  address TEXT
 );
 
 CREATE TABLE burgers(

@@ -1,4 +1,26 @@
 <h1> <%= @eatery.name %></h1> 
 
+<img src=" <%= @eatery.image %> " >
+
+<p> <%= @eatery.address %> </p>
+
+<p1> <%= @eatery.description  %></p1>
+
 <form method="post" action="/eateries/<%= @eatery.id %>" >
 <input type="submit" value="Delete" />
+
+<h2>Menu</h2>
+<table>
+  <tr>
+    <th>Burger</th>
+    <th></th>
+    <th>Price</th>
+  </tr>
+  <% for menu_item in @menu_items  %>
+  <tr>
+    <td> <%=menu_item.burger.name  %></td>
+    <td>|</td>
+    <td> <%=menu_item.price  %> </td>
+  </tr>
+  <% end %>
+</table>

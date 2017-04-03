@@ -7,14 +7,14 @@ get '/burgers' do
   erb ( :"burgers/index" )
 end
 
+get '/burgers/new' do
+  erb(:"burgers/new")
+end
+
 post '/burgers' do
   @burger = Burger.new(params)
   @burger.save()
   redirect to '/burgers'
-end
-
-get '/burgers/new' do
-  erb(:"burgers/new")
 end
 
 get '/burgers/:id' do

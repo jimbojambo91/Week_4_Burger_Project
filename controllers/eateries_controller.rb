@@ -19,6 +19,7 @@ end
 
 get '/eateries/:id' do
   @eatery = Eatery.find(params[:id])
+  @menu_items = @eatery.menu_items
   erb(:"eateries/show")
 end
 

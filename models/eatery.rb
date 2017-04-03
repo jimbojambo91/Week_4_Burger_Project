@@ -2,19 +2,21 @@ require_relative( '../db/sql_runner' )
 
 class Eatery
 
-  attr_reader(:id, :name, :image)
+  attr_reader(:id, :name, :image, :description, :address)
 
   def initialize(options)
     @id = options['id'].to_i
     @name = options['name']
     @image = options['image']
+    @description = options['description']
+    @address = options['address']
   end
 
   def save()
     sql = "INSERT INTO eateries (
-      name, image
+      name, image, description, address
     ) VALUES (
-      '#{ @name }', '#{image}'
+      '#{ @name }', '#{@image}', '#{@description}', '#{@address}'
     ) RETURNING *"
     results = SqlRunner.run(sql)
     @id = results.first()['id'].to_i
@@ -31,6 +33,12 @@ class Eatery
   def delete
     sql = "DELETE FROM eateries WHERE id = #{@id}"
     SqlRunner.run(sql)
+  end
+
+  def menu_items
+    sql = "SELECT m.* FROM menu_items m WHERE eatery_id = #{id}"
+    menu_items = MenuItem.map_items(sql)
+    return menu_items
   end
 
   def self.map_items(sql)

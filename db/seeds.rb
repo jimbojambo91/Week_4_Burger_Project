@@ -41,8 +41,16 @@ burger3.save()
 burger4.save()
 burger5.save()
 
-eatery1 = Eatery.new({'name' => "McDonalds", 'image' => '/images/Eateries/mcdonalds.jpg'}) 
-eatery2 = Eatery.new({'name' => "Burger King", 'image' => '/images/Eateries/burger_king.jpg'}) 
+eatery1 = Eatery.new({
+  'name' => "McDonalds", 
+  'image' => '/images/Eateries/mcdonalds.jpg', 
+  'description' => "McDonald''s (or simply as McD) is an American hamburger and fast food restaurant chain. It was founded in 1940 as a barbecue restaurant operated by Richard and Maurice McDonald. In 1948, they reorganized their business as a hamburger stand, using production line principles." , 
+  'address' => "137/138 Princes St, Edinburgh EH2 4BL"}) 
+eatery2 = Eatery.new({
+  'name' => "Burger King", 
+  'image' => '/images/Eateries/burger_king.jpg', 
+  'description' => 'Burger King (BK) is an American global chain of hamburger fast food restaurants. Headquartered in the unincorporated area of Miami-Dade County, Florida, the company was founded in 1953 as InstaBurger King, a Jacksonville, Florida-based restaurant chain.', 
+  'address' => "Edinburgh Waverley, 18 North Bridge, Edinburgh EH1 1BB"}) 
 eatery1.save()
 eatery2.save()
 
