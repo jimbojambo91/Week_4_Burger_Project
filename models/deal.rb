@@ -1,4 +1,6 @@
 require_relative( '../db/sql_runner' )
+require_relative('menu_items')
+require('pry-byebug')
 
 class Deal
 
@@ -62,18 +64,34 @@ class Deal
   def calculate_deal_price
     original_price = self.menu_item.price
     case self.type
-    when '*'
-      deal_price = original_price * self.amount
-    when '-'
-      deal_price = original_price - self.amount
-    when 'Special'
+    when "*"
+      deal_price = original_price * self.amount.to_f
+      return deal_price
+    when "-"
+      deal_price = original_price - self.amount.to_f
+      return deal_price
+    when "Special"
       if self.name == "BOGOF"
         deal_price = original_price / 2
+        return deal_price
       else
-        return self.name
+        puts self.name
       end
     end
-    return deal_price
+  end
+
+  def calculate_deal_saving
+    original_price = self.menu_item.price
+    deal_price = self.calculate_deal_price
+    deal_saving = original_price - deal_price
+    return deal_saving
+  end
+
+  def calculate_deal_saving_percentage
+    original_price = self.menu_item.price
+    deal_price = self.calculate_deal_price
+    deal_saving_percentage =  ((deal_price / original_price)*100).to_i
+    return deal_saving_percentage
   end
 
   def self.map_items(sql)

@@ -7,6 +7,12 @@
     <th>Eatery</th>
     <th></th>
     <th>Burger</th>
+    <th></th>
+    <th>Deal Price</th>
+    <th></th>
+    <th>Deal Saving</th>
+    <th></th>
+    <th>Deal Saving as % of Total Cost</th>
   </tr>
   <% for deal in @deals %>
   <tr>
@@ -17,6 +23,12 @@
     <td> <%= deal.eatery.name %> </td>
     <td>|</td>
     <td> <%= deal.burger.name %> </td>
+    <td>|</td>
+    <td> £<%= deal.calculate_deal_price %> </td>
+    <td>|</td>
+    <td> £<%= deal.calculate_deal_saving %> </td>
+    <td>|</td>
+    <td> <%= deal.calculate_deal_saving_percentage %> % </td>
   </tr>
   <% end %>
 </table>

@@ -25,7 +25,7 @@ CREATE TABLE menu_items(
   id SERIAL2 PRIMARY KEY,
   eatery_id INT2 REFERENCES eateries(id),
   burger_id INT2 REFERENCES burgers(id),
-  price INT2
+  price FLOAT
 );
 
 CREATE TABLE deals(
@@ -34,5 +34,5 @@ CREATE TABLE deals(
   menu_item_id INT2 REFERENCES menu_items(id),
   day_id INT2 REFERENCES days(id),
   type VARCHAR(255),
-  amount INT2
+  amount FLOAT
 );
