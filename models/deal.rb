@@ -105,6 +105,12 @@ class Deal
     return result
   end
 
+  def self.find( id )
+    sql = "SELECT * FROM deals WHERE id=#{id}"
+    results = SqlRunner.run( sql )
+    return Deal.new( results.first )
+  end
+
   def self.all()
     sql = "SELECT * FROM deals"
     results = SqlRunner.run( sql )
