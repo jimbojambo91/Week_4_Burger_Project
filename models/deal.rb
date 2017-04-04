@@ -65,10 +65,10 @@ class Deal
     original_price = self.menu_item.price
     case self.type
     when "*"
-      deal_price = original_price * self.amount.to_f
+      deal_price = (original_price * self.amount.to_f).round(2)
       return deal_price
     when "-"
-      deal_price = original_price - self.amount.to_f
+      deal_price = (original_price - self.amount.to_f).round(2)
       return deal_price
     when "Special"
       if self.name == "BOGOF"
@@ -83,7 +83,7 @@ class Deal
   def calculate_deal_saving
     original_price = self.menu_item.price
     deal_price = self.calculate_deal_price
-    deal_saving = original_price - deal_price
+    deal_saving = (original_price - deal_price).round(2)
     return deal_saving
   end
 
@@ -91,6 +91,7 @@ class Deal
     original_price = self.menu_item.price
     deal_price = self.calculate_deal_price
     deal_saving_percentage =  ((deal_price / original_price)*100).to_i
+    deal_saving_percentage = 100 - deal_saving_percentage
     return deal_saving_percentage
   end
 

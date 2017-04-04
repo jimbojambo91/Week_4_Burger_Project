@@ -1,18 +1,18 @@
 <h1>Add a new Deal!</h1>
 
 <form method="post" action="/deals">
-  <label for="name">Name:</label>
+  <label for="name">Name of Promotion:</label>
   <input id="name" type="text" name="name" />
   <br/>
   <label for="day">Day deal available:</label>
-  <select name="day">
+  <select name="day_id">
     <% for day in @days %>
     <option value="<%= day.id %>"><%= day.name %></option>
     <% end %>
     </select>
   <br/>
   <label for="menu_item">Burger:</label>
-  <select name="menu_item">
+  <select name="menu_item_id">
     <% for menu_item in @menu_items %>
     <option value="<%= menu_item.id %>"><%= menu_item.burger.name %> @ <%= menu_item.eatery.name %></option>
     <% end %>
@@ -25,7 +25,7 @@
     <option value="Special"> Special Deals</option>
     </select>
   <br/>
-  <label for="amount">% off or amount price reduced by:</label>
+  <label for="amount">% off (eg. 30% = 0.7) or amount price reduced by:</label>
   <input id="amount" type="text" name="amount" />
   <br/>
   <input type="submit" value="Add New Deal"/>
