@@ -25,6 +25,17 @@ class Deal
     @id = results.first()['id'].to_i
   end
 
+  def update()
+    sql = "UPDATE deals SET
+      name = '#{ @name }',
+      menu_item_id = #{ @menu_item_id },
+      day_id = #{ @day_id.to_i },
+      type = '#{@type}',
+      amount = #{amount}
+      WHERE id = #{ @id }"
+    SqlRunner.run( sql )
+  end
+
   def eatery()
     sql = "SELECT e.* FROM eateries e
       INNER JOIN menu_items m

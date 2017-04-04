@@ -1,0 +1,44 @@
+<form method="post" action="/deals/<%=@deal.id%>/edit">
+
+  <label for="name">Name:</label>
+  <input id="name" type="text" name="name" value="<%=@deal.name%>"/>
+  <br/>
+
+  <label for="menu_item-select">Select a Menu Item:</label>
+  <select id="menu_item-select" name="menu_item_id" >
+  <% for menu_item in @menu_items %>
+    <option value="<%= menu_item.id %>" <%= "selected" if @deal.menu_item_id.to_i == menu_item.id %>><%= menu_item.burger.name %> @ <%= menu_item.eatery.name %></option>
+    <% end %>
+  </select>
+  <br/>
+
+  <label for="day-select">Select a day:</label>
+  <select id="day-select" name="day_id" >
+  <% for day in @days %>
+    <option value="<%= day.id %>" <%= "selected" if @deal.day_id.to_i == day.id %>><%= day.name %></option>
+    <% end %>
+  </select>
+  <br/>
+
+  <label for="type-select">Type of Deal:</label>
+  <select id="type-select" name="type" >
+    <option value="*" <%= "selected" if @deal.type == "*" %>> % off Deal</option>
+    <option value="-"<%= "selected" if @deal.type == "-" %> > Minus x amount Deal</option>
+    <option value="Special" <%= "selected" if @deal.type == "Special" %>> Special Deals</option>
+  </select>
+  <br/>
+
+  <label for="amount">% off (eg. 30% = 0.7) or amount price reduced :</label>
+  <input id="amount" type="text" name="amount" value="<%=@deal.amount%>"/>
+
+
+
+
+  <input type="submit" value="Save"/>
+
+</form>
+
+
+
+
+  

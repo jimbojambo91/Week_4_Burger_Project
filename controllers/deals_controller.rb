@@ -30,3 +30,18 @@ post '/deals/:id' do
   @deal.delete()
   redirect to '/deals'
 end
+
+get '/deals/:id/edit' do
+  @menu_items = MenuItem.all()
+  @days = Day.all()
+  @burgers = Burger.all()
+  @eateries = Eatery.all()
+  @deal = Deal.find(params[:id])
+  erb(:"deals/edit")
+end
+
+post '/deals/:id/edit' do
+  @deal = Deal.new(params)
+  @deal.update()
+  redirect to "/deals"
+end
