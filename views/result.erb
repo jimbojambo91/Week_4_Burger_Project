@@ -1,0 +1,13 @@
+<h1>Results</h1>
+
+<% if @user_selection = "a" %>
+  <p> You should head on down to <%= Deal.cheapest_burger(@day.id).eatery.name %></p> 
+
+<% elsif @user_selection = "b" %>
+  <%= Deal.biggest_saving(@day.id) %>
+
+<% elsif @user_selection = "c" %>
+
+
+<% end %>
+  

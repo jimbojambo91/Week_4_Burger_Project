@@ -4,7 +4,7 @@ require('pry-byebug')
 
 class Deal
 
-  attr_reader :id, :name, :menu_item_id, :day_id, :type, :amount
+  attr_reader :id, :name, :menu_item_id, :day_id, :type, :amount, :price, :percentage_saving
 
   def initialize(options)
     @id = nil || options['id'].to_i
@@ -13,13 +13,18 @@ class Deal
     @day_id = options['day_id']
     @type = options['type']
     @amount = options['amount'].to_f
+    @price = nil || options['price'].to_f
+    @percentage_saving = nil || options['percentage_saving'].to_f
   end
 
   def save()
+    @price = calculate_deal_price
+    @percentage_saving = calculate_deal_saving_percentage
+
     sql = "INSERT INTO deals (
-      name, menu_item_id, day_id, type, amount
+      name, menu_item_id, day_id, type, amount, price, percentage_saving
     ) VALUES (
-      '#{ @name }', #{ @menu_item_id }, #{@day_id}, '#{@type}', #{@amount} 
+      '#{ @name }', #{ @menu_item_id }, #{@day_id}, '#{@type}', #{@amount}, #{@price}, #{@percentage_saving}
     ) RETURNING *"
     results = SqlRunner.run(sql)
     @id = results.first()['id'].to_i
@@ -56,8 +61,6 @@ class Deal
 
   def menu_item()
     sql = "SELECT m.* FROM menu_items m
-      INNER JOIN deals d
-      ON m.id = d.menu_item_id
       WHERE m.id = #{@menu_item_id}"
      menu_item = MenuItem.map_items(sql).first
      return menu_item
@@ -74,6 +77,7 @@ class Deal
 
   def calculate_deal_price
     original_price = self.menu_item.price
+
     case self.type
     when "*"
       deal_price = (original_price * self.amount.to_f).round(2)
@@ -104,6 +108,26 @@ class Deal
     deal_saving_percentage =  ((deal_price / original_price)*100).to_i
     deal_saving_percentage = 100 - deal_saving_percentage
     return deal_saving_percentage
+  end
+
+  def self.biggest_saving(day)
+    sql = "SELECT * FROM DEALS WHERE day_id = #{day}
+           ORDER BY 
+           percentage_saving DESC,
+           price DESC
+           limit 1"
+    result = SqlRunner.run( sql )
+    return Deal.new( result.first )
+  end
+
+  def self.cheapest_burger(day)
+    sql = "SELECT * FROM DEALS WHERE day_id = #{day}
+           ORDER BY 
+           price ASC
+           limit 1"
+    result = SqlRunner.run( sql )
+    binding.pry
+    return Deal.new( result.first )
   end
 
   def delete

@@ -37,5 +37,7 @@ CREATE TABLE deals(
   menu_item_id INT2 REFERENCES menu_items(id) ON DELETE CASCADE,
   day_id INT2 REFERENCES days(id),
   type VARCHAR(255),
-  amount FLOAT
+  amount FLOAT,
+  price FLOAT,
+  percentage_saving INT2
 );
