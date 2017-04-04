@@ -8,6 +8,7 @@
 
 <form method="post" action="/eateries/<%= @eatery.id %>" >
 <input type="submit" value="Delete" />
+</form>
 
 <h2>Menu</h2>
 <table>
@@ -15,12 +16,19 @@
     <th>Burger</th>
     <th></th>
     <th>Price</th>
+    <th></th>
+    <th>Delete</th>
   </tr>
   <% for menu_item in @menu_items  %>
   <tr>
     <td> <%=menu_item.burger.name  %></td>
     <td>|</td>
     <td> <%=menu_item.price  %> </td>
+    <td>|</td>
+    <td> 
+    <form method="post" action="/menu_items/<%= menu_item.id %>" >
+<input type="submit" value="Delete" />
+</form></td>
   </tr>
   <% end %>
 </table>

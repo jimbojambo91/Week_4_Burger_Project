@@ -50,6 +50,12 @@ class MenuItem
     return results.map { |hash| MenuItem.new( hash ) }
   end
 
+  def self.find( id )
+    sql = "SELECT * FROM menu_items WHERE id=#{id}"
+    results = SqlRunner.run( sql )
+    return MenuItem.new( results.first )
+  end
+
   def self.delete_all
     sql = "DELETE FROM menu_items"
     SqlRunner.run( sql )
