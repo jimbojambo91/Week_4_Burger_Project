@@ -17,6 +17,8 @@
     <th></th>
     <th>Price</th>
     <th></th>
+    <th>Update</th>
+    <th></th>
     <th>Delete</th>
   </tr>
   <% for menu_item in @menu_items  %>
@@ -26,9 +28,16 @@
     <td> <%=menu_item.price  %> </td>
     <td>|</td>
     <td> 
-    <form method="post" action="/menu_items/<%= menu_item.id %>" >
-<input type="submit" value="Delete" />
-</form></td>
+      <form method="get" action="/menu_items/<%= menu_item.id %>/edit" >
+        <input type="submit" value="Edit" />
+      </form>
+    </td>
+    <td>|</td>
+    <td> 
+      <form method="post" action="/menu_items/<%= menu_item.id %>" >
+        <input type="submit" value="Delete" />
+      </form>
+    </td>
   </tr>
   <% end %>
 </table>

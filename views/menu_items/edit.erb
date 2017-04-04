@@ -1,0 +1,20 @@
+<form method="post" action="/menu_items/<%=@menu_item.id%>/edit">
+
+<label for="burger-select">Select a burger:</label>
+<select id="burger-select" name="burger_id" >
+<% for burger in @burgers %>
+  <option value="<%= burger.id %>" <%= "selected" if @menu_item.burger_id.to_i == burger.id %>><%= burger.name %></option>
+  <% end %>
+</select>
+
+<label for="eatery-select">Select an eatery:</label>
+<select id="eatery-select" name="eatery_id" >
+<% for eatery in @eateries %>
+  <option value="<%= eatery.id %>" <%= "selected" if @menu_item.eatery_id.to_i == eatery.id %>><%= eatery.name %></option>
+  <% end %>
+</select>
+
+  <label for="price">Price:</label>
+  <input id="price" type="text" name="price" value="<%=@menu_item.price%>"/>
+    <input type="submit" value="Save"/>
+</form>

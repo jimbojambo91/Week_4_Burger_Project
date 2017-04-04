@@ -21,6 +21,15 @@ class MenuItem
     @id = results.first()['id'].to_i
   end
 
+  def update()
+    sql = "UPDATE menu_items SET
+      burger_id = #{ @burger_id },
+      eatery_id = #{ @eatery_id },
+      price = #{ @price.to_i }
+      WHERE id = #{ @id }"
+    SqlRunner.run( sql )
+  end
+
   def delete
     sql = "DELETE FROM menu_items WHERE id = #{@id}"
     SqlRunner.run(sql)
