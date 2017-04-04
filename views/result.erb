@@ -1,13 +1,55 @@
 <h1>Results</h1>
 
-<% if @user_selection = "a" %>
-  <p> You should head on down to <%= Deal.cheapest_burger(@day.id).eatery.name %></p> 
+<% if @user_selection == "cheap" %>
+  <% deal = Deal.cheapest_burger(@day.id) %> 
+  <p> You should head on down to <%= deal.eatery.name %> for a <%= deal.burger.name %> which is <%= deal.name %>. You can pick one up for only £<%= deal.price %> </p> 
 
-<% elsif @user_selection = "b" %>
-  <%= Deal.biggest_saving(@day.id) %>
+<% elsif @user_selection == "saving" %>
+<% deal = Deal.biggest_saving(@day.id) %> 
+<p> You should head on down to <%= deal.eatery.name %> for a <%= deal.burger.name %> which is <%= deal.name %>. You can pick one up for only £<%= deal.price %>. Thats a <%= deal.percentage_saving %>% saving! </p>  
 
-<% elsif @user_selection = "c" %>
+<% elsif @user_selection == "all" %>
+   <% @deals = Deal.find_by_day(@day.id)  %>
+   <% if @deals == [] %>
+    <p>Sorry it looks like there are no deals today</p>
+    <% else %>
 
 
+   <table>
+     <tr>
+       <th>Day Available</th>
+       <th></th>
+       <th>Type of Deal</th>
+       <th></th>
+       <th>Eatery</th>
+       <th></th>
+       <th>Burger</th>
+       <th></th>
+       <th>Deal Price</th>
+       <th></th>
+       <th>Deal Saving</th>
+       <th></th>
+       <th>Deal Saving as % of Total Cost</th>
+     </tr>
+     <% for deal in @deals %>
+     <tr>
+       <td><%= (deal.day).name %></td>
+       <td>|</td>
+       <td> <a href='/deals/<%= deal.id %>'><%= deal.name %> </td>
+       <td>|</td>
+       <td> <%= deal.eatery.name %> </td>
+       <td>|</td>
+       <td> <%= deal.burger.name %> </td>
+       <td>|</td>
+       <td> £<%= deal.price %> </td>
+       <td>|</td>
+       <td> £<%= deal.calculate_deal_saving %> </td>
+       <td>|</td>
+       <td> <%= deal.percentage_saving %> % </td>
+     </tr>
+     <% end %>
+   </table>
+
+   <% end %>
 <% end %>
   

@@ -1,18 +1,18 @@
 <h1>BURGERS</h1>
 
 <form method="post" action="/selection">
-  <label for="day">What day are we eating burgers?:</label>
+  <label for="day">What day are we eating burgers?</label>
   <select name="day_id">
     <% for day in @days %>
     <option value="<%= day.id %>"><%= day.name %></option>
     <% end %>
   </select>
   <br/>
-  <label for="request">What are you looking for?:</label>
+  <label for="request">What are you looking for?</label>
   <select name="request">
-    <option value="a"> Cheapest Burger</option>
-    <option value="b"> Biggest Saving</option>
-    <option value="c"> All Deals</option>
+    <option value="cheap"> Cheapest Burger</option>
+    <option value="saving"> Biggest Saving</option>
+    <option value="all"> All Deals</option>
   </select>
   <br/>
   <input type="submit" value="Search"/>

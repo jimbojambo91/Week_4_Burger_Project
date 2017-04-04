@@ -126,7 +126,6 @@ class Deal
            price ASC
            limit 1"
     result = SqlRunner.run( sql )
-    binding.pry
     return Deal.new( result.first )
   end
 
@@ -145,6 +144,12 @@ class Deal
     sql = "SELECT * FROM deals WHERE id=#{id}"
     results = SqlRunner.run( sql )
     return Deal.new( results.first )
+  end
+
+  def self.find_by_day( day )
+    sql = "SELECT * FROM deals WHERE day_id = #{day}"
+    deals = Deal.map_items(sql)
+    return deals
   end
 
   def self.all()
