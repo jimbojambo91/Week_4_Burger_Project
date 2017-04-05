@@ -48,7 +48,7 @@ class Eatery
   end
 
   def self.all()
-    sql = "SELECT * FROM eateries"
+    sql = "SELECT * FROM eateries ORDER BY name"
     results = SqlRunner.run( sql )
     return results.map { |eatery| Eatery.new( eatery) }
   end

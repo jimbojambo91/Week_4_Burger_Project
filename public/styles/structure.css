@@ -33,3 +33,8 @@ img{
     width:100%;
     max-width:200px;
 }
+
+.burger-page-show {
+  max-width:500px;
+  max-height: 500px;
+}

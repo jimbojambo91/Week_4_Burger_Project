@@ -25,7 +25,7 @@ get '/deals/:id' do
   erb(:"deals/show")
 end
 
-post '/deals/:id' do
+post '/deals/:id/delete' do
   @deal = Deal.find(params[:id])
   @deal.delete()
   redirect to '/deals'

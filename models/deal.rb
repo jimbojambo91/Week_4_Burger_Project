@@ -153,7 +153,7 @@ class Deal
   end
 
   def self.all()
-    sql = "SELECT * FROM deals"
+    sql = "SELECT * FROM deals ORDER BY day_id"
     results = SqlRunner.run( sql )
     return results.map { |hash| Deal.new( hash ) }
   end

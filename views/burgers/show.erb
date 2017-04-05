@@ -1,6 +1,6 @@
 <h1> <%= @burger.name %></h1> 
 
-<img src=" <%= @burger.image %> " >
+<img class= "burger-page-show" src=" <%= @burger.image %> " >
 
 <div class="burger.para">
 <p1> <%=@burger.description  %></p1>
@@ -21,7 +21,7 @@
   <tr>
     <td> <%=menu_item.eatery.name  %></td>
     <td>|</td>
-    <td> <%=menu_item.price  %> </td>
+    <td> £<%=menu_item.price  %> </td>
   </tr>
   <% end %>
 </table>
